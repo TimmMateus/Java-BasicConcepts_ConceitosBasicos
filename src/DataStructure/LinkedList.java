@@ -34,12 +34,28 @@ public class LinkedList{
      * @param data to be stored 
      */
     public void addItem(String data){
-        Node node = new Node(data);
+        Node node = new Node(data,lastNode);
         if(length==0) firstNode=node;
         else lastNode.setNextNode(node);
-        node.setPreviousNode(lastNode);
         lastNode=node;
         length++;
+    }
+
+    /**
+     * Insert a new item in the asked position
+     * @param data
+     * @param position
+     */
+    public void addItem(String data, int position){
+        if(position==0) addItemFirst(data);
+        else if(position>=length)addItem(data);
+        else{
+            Node node = new Node(data);
+            node.setPreviousNode(node.findNode(firstNode, (position-1)));
+            node.setNextNode(node.findNode(firstNode, position));
+            node.getPreviousNode().setNextNode(node);
+            node.getNextNode().setPreviousNode(node);
+        }
     }
 
     /**
@@ -58,10 +74,25 @@ public class LinkedList{
     }
 
     /**
+     * Removes the item in the asked position
+     * @param position
+     */
+    public void remove(int position){
+        if(position==0)removeFirst();
+        else if(position>=length-1)removeLast();
+        else{
+            Node helperNode = new Node(null);
+            helperNode = firstNode.findNode(firstNode, position);
+            helperNode.getPreviousNode().setNextNode(helperNode.getNextNode());
+            helperNode.getNextNode().setPreviousNode(helperNode.getPreviousNode());
+        }
+    }
+
+    /**
      * Removes the last stored data
      */
     public void removeLast(){
-        if(firstNode==null) System.out.println("Nothing happend, list is empty");
+        if(firstNode==null) System.out.println("Nothing happened, list is empty");
         else{
             lastNode = lastNode.getPreviousNode();
             if(lastNode==null) firstNode=lastNode;
@@ -76,7 +107,7 @@ public class LinkedList{
      * Removes the first item of the list
      */
     public void removeFirst(){
-        if(firstNode==null) System.out.println("Nothing happend, list is empty");
+        if(firstNode==null) System.out.println("Nothing happened, list is empty");
         else{
             if(firstNode.getNextNode()==null){
                 firstNode=null;
@@ -90,7 +121,17 @@ public class LinkedList{
     }
 
     /**
-     * Print all data stored in list
+     * Clear the entire list;
+     */
+    public void clear(){
+        firstNode = null;
+        lastNode = null;
+        length = 0;
+        System.out.println("List successfully emptied!");
+    }
+
+    /**
+     * Print all data stored in the list
      */
     public void printList(){
         if(firstNode==null) System.out.println("This list is empty");
