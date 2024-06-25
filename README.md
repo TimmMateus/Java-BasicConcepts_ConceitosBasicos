@@ -1,86 +1,86 @@
-# Welcome
+# Bem Vindo
 
-This is a project with basic but core structures in Java. At the moment it's a *work in progress*, as I'll be adding more features as I complete them.
+Este é um projeto com estruturas básicas, porém essenciais. Atualmente é um *trabalho em andamento*, e será adicionado mais itens quando completos.
 <br>
-The idea behind the project is to have a repository with structures that can be used in other projects, without the need to code this features again.
+A ideia por trás do projeto é que haja um repositório com essas estruturas disponíuveis para outros projetos, sem a nessessidade de refazer sempre que precisar.
 <br>
-As the focus of this project is the structures, and not a complete app, the class containing the Main method isn't included as it isn't necessary.
+Como o foco do projeto são as estruturas, e não um aplicativo completo, a classe contendo o metodo principal (Main) não está incluso por não ser essencial.
 <br>
-Feel free to contact me for any suggestions, corrections or doubts.
+Sinta-se livre para sugestões, correções ou dúvidas.
 
-## About me
-Graduated in Computer Engineering, and studying System Analyses and Development, I'm looking for start a career in Software Development, focused in BackEnd with Java and C#, but not excluding other technologies.
+## Sobre mim
+Formado em Engenharia da Computação e estudando Análise e Desenvolvimento de Sistemas, estou iniciando minha carreira em Desenvolvimento de software, focado em BackEnd utilzando Java e C#, não excluindo outras tecnologias.
 <br>
 [TimmMateus](mailto:maretimm@gmail.com)
 
-## Structures
+## Estrutura
 
-|[Package](#packages-and-classes)|Class|
+|[Pacote](#packages-and-classes)|Class|
 |---|---|
-|[DataStructure](#datastructure)|[Node](#node)|
-|↳|[LinkedList](#linkedlist)|
+|[EstruturaDeDados](#estruturadedados)|[Nodo](#nodo)|
+|↳|[ListaEncadeada](#listaencadeada)|
 
-### DataStructure
+### EstruturaDeDados
 
-This package contains classes and methods focused on working with Data storing and manipulation.
+Este pacote contém classes e métodos focados no armazenamento e manipulação de dados.
 
-#### Node
+#### Nodo
 
-This is the main class in the package, where data is stored. It's only accessible to the package, as it needs other classes to structure to access and manipulate the data.
+Este é a classe principal no pacote, onde os dados são armazenados. É apenas acessível ao pacote, uma vez que necessita de outras classes para estruturar, acessar e manipular os dados.
 
-##### Attributes
+##### Atributos
 
-|Name|Type|Description|
+|Nome|Tipo|Descrição|
 |---|---|---|
-|data|String|Stored information in the node|
-|nextNode|Node|Next node in the sequence|
-|previousNode|Node|Previous node in the sequence|
+|dado|String|Armazena a informação do nodo|
+|proximoNodo|Nodo|Nodo seguinte da sequência|
+|anteriorNodo|Nodo|Nodo anterior da sequência|
 
-##### Methods
+##### Métodos
 
-|Name|Parameter (Type)|Description|
+|Nome|Parâmetro (Tipo)|Descrição|
 |---|---|---|
-|Node|data (String)|Constructor with only data|
-|Node|data (String) <br> PreviousNode (Node)|Constructor when adding nodes <br> Stores the previous node creating a link
-|setNextNode|node (Node)|Set which node comes after|
-|setPreviousNode|node (Node)|Set which node comes before|
-|getNextNode||Return the node that comes after|
-|getPreviousNode||Return the node that comes before|
-|findNode|node (Node) <br> position (int)|search in the linked nodes returning the note in a given position|
-|printNodes||Print the values of a node with its position <br> Calls the method to print the next node|
-|printNodes|position (int)|Print the values of a node with its position <br> Calls the method to print the next node|
-|printNode||Print the value of the node|
-|getData||Returns the data stored in the node|
+|Nodo|dado (String)|Contrutor sem dado|
+|Nodo|dado (String) <br> anteriorNodo (Node)|Construtor ao adicionar novos nodos <br> Armazena o nodo anterior da sequência
+|definirProximoNodo|nodo (Nodo)|Define o nodo seguinte na sequência|
+|definirAnteriorNodo|nodo (Nodo)|Define o nodo anterior na sequência|
+|pegarProximoNodo||Retorna o nodo que vem depois|
+|pegarAnterioroNodo||Retorna o nodo que vem antes|
+|procurarNodo|nodo (Nodo) <br> posicao (int)|Procura na lista returnando o nodo na posição solicitada|
+|imprimirNodos||Imprime o dado do nodo com a sua posição <br> Chama o método para imprimir o próximo nodo|
+|imprimirNodos|posicao (int)|Imprime o dado do nodo com a sua posição <br> Chama o método para imprimir o próximo nodo|
+|imprimirNodo||Imprime o dado do nodo|
+|pegarDado||Retorna o dado do nodo|
 
-#### LinkedList
+#### ListaEncadeada
 
-This class uses the class Node to create a list with stored information, and is able to add and remove items in the start, middle or end of the list. It keeps the length of the list, the first node and the last one as reference of the list's information
+Essa classe utilizar a classe Nodo para criar uma lista com dados armazenados, e é possível adicionar e remover itens no início, meio ou fim da lista. Também controla o comprimento da lista, seu primeiro item e último item como referência das informações da lista.
 
-##### Attributes
+##### Atributos
 
-|Name|Type|Description|
+|Nome|Tipo|Descrição|
 |---|---|---|
-|firstNode|Node|The reference of the first node of the list|
-|lastNode|Node|The reference of the last node of the list|
-|length|int|The quantity of nodes in the list|
+|primeiroNodo|Nodo|A referência do primeiro nodo da lista|
+|ultimoNodo|Nodo|A referência do último nodo da lista|
+|comprimento|int|A quantidade de nodos na lista|
 
-##### Methods
+##### Métodos
 
-|Name|Parameter (Type)|Description|
+|Nome|Parâmetro (Tipo)|Descrição|
 |---|---|---|
-|Linked List||Creates an empty list|
-|Linked List|data (String)|Creates an list with it's firsts item|
-|addItem|data (String)|Adds a new item at the end of the list|
-|addItem|data (String) <br> position (int)|Adds a new item in the list at the given position|
-|addItemFirst|data (String)|Adds a new item at the beginning of the list|
-|remove|position (int)|Removes the item from the list at the given position|
-|removeLast||Removes the last item of the list|
-|removeFirst||Remove the first item of the list|
-|clear||Clears the entire list|
-|printList||Print all data stored in the list|
-|length||Returns the length of the list|
-|getFirst||Returns the data stored in the first item|
-|getLast||Returns the data stored in the last item|
+|ListaEncadeada||Cria uma lista vazia|
+|ListaEncadeada|dado (String)|Cria uma lista com seu primeiro item|
+|adicionarItem|dado (String)|Insere um item no final da lista|
+|adicionarItem|dado (String) <br> posicao (int)|Insere um novo item na posição solicitada|
+|adicionarPrimeirItem|dado (String)|Adiciona um novo item na primeira posição|
+|remover|posicao (int)|Remove o item na posição solicitada|
+|removerUltimo||Remove o último nodo da lista|
+|removerPrimeiro||Remove o primeiro nodo da lista|
+|esvaziar||Limpa a lista inteira|
+|imprimirLista||Imprime todos os dados armazenados na lista|
+|comprimento||Retorna o comprimento da lista|
+|pegarPrimeiro||Retorna o primeiro dado armazenado na lista|
+|pegarUltimo||Retorna o ultimo dado armazenado na lista|
 
-## License
-[This project is licensed under the MIT License - see the LICENSE.md file for details.](LICENSE.md)
+## Licença
+[Este projeto está sob a licença MIT - veja mais detalhes no arquivo LICENSE.md.](LICENSE.md)
